@@ -1,0 +1,68 @@
+/* --- Loading Indicator Styles: "The Spinning Pencil" --- */
+
+/* Full-screen overlay to cover content while loading */
+.loading-container {
+    position: fixed; /* Ensures it covers the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi-transparent, slightly yellowish backdrop to match app theme */
+    background-color: rgba(254, 252, 232, 0.85); /* yellow-50 with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
+}
+
+/* The Loader itself (The Pencil Container) */
+.loader {
+    width: 100px;
+    height: 100px;
+    /* This rotation makes the "pencil" spin */
+    animation: spin 1.5s linear infinite;
+    position: relative;
+}
+
+/* --- The Pencil Body --- */
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    /* Center the pseudo-elements */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* The main body of the pencil */
+    height: 12px;
+    width: 80px;
+    border-radius: 6px;
+}
+
+/* Pencil Rubber/Eraser (Top) */
+.loader::before {
+    background-color: #ef4444; /* red-500 */
+    /* Adjust position and add a subtle box-shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -100%) rotate(45deg); /* Positioned and rotated */
+}
+
+/* Pencil Wood/Graphite Tip (Bottom) */
+.loader::after {
+    /* Two layers for wood and graphite */
+    background: linear-gradient(
+        to right,
+        #78350f 15%,     /* dark brown for graphite tip */
+        #f59e0b 15%,     /* yellow-500 for the wood body */
+        #f59e0b 85%,     
+        #9ca3af 85%      /* gray for the ferrule/metal band */
+    );
+    transform: translate(-50%, 0%) rotate(45deg); /* Positioned and rotated */
+}
+
+/* --- Spin Animation Keyframes --- */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

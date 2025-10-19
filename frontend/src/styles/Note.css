@@ -1,0 +1,92 @@
+/* --- Note Container Styles (Applied via Home.jsx) --- */
+
+/* These base classes define the look set up in the Home component's CSS:
+   .note-container is equivalent to the .note-card class in the Home.css */
+.note-container {
+    /* Base styles inherited/overridden for better typography */
+    font-family: 'Georgia', serif;
+    line-height: 1.4;
+    position: relative;
+    padding: 1.5rem;
+    overflow: hidden; /* Essential for the dog-ear and grid effects */
+}
+
+/* --- Dog-Eared Corner Effect --- */
+.note-corner-fold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px; 
+    height: 30px;
+    background: linear-gradient(
+        135deg, 
+        #f59e0b 50%, /* yellow-500 border color */
+        #fef9c3 50% /* yellow-100 paper color */
+    );
+    box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.1);
+    transform: rotate(180deg) scaleX(-1);
+    z-index: 5; 
+}
+
+
+/* --- Typography & Content --- */
+.note-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1f2937; /* Dark text */
+    margin-bottom: 0.5rem;
+    /* Adding a subtle underline for distinction */
+    border-bottom: 2px dashed #fcd34d; /* yellow-300 */
+    padding-bottom: 0.25rem;
+    line-height: 1.2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-content {
+    color: #4b5563;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    /* Limit height and hide overflow for a clean card */
+    max-height: 75px; 
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Footer and Delete Button --- */
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 0.5rem;
+}
+
+.note-date {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.delete-button {
+    background-color: #fee2e2; /* red-100 */
+    color: #dc2626; /* red-600 */
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    /* Animation on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+    background-color: #fca5a5; /* red-300 */
+    color: #991b1b; /* dark red */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}

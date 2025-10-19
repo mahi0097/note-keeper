@@ -1,0 +1,208 @@
+/* --- CSS VARIABLES for easy theme change --- */
+:root {
+    --primary-color: #3b82f6;    /* BLUE (Used for note card border top) */
+    --secondary-color: #f59e0b;  /* YELLOW (Used for note card border top) */
+    --background-color: #fefce8; /* yellow-50 (WHOLE DISPLAY BACKGROUND) */
+    --paper-color: #fef9c3;      /* yellow-100 (Note Card Background) */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-heavy: rgba(0, 0, 0, 0.25);
+
+    /* --- New Form Theme Colors --- */
+    --form-bg-color: #fff8e1;    /* Light yellow/cream for form background */
+    --form-primary-brown: #7c2d12; /* Dark Brown for button/header */
+    --form-border-yellow: #fcd34d; /* Bright yellow border accent */
+}
+
+/* --- Global / Layout Styles --- */
+.home-container {
+    min-height: 100vh;
+    padding: 3rem;
+    background-color: var(--background-color); /* BACKGROUND SHOWS IN WHOLE DISPLAY */
+    font-family: 'Arial', sans-serif; 
+}
+
+.max-w-container {
+    max-width: 1400px; /* Wider container for laptop feel */
+    margin: 0 auto;
+}
+
+/* --- Header Styles (Standard Memo Wall Look) --- */
+.main-header {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    display: block;
+}
+
+.header-badge {
+    background-color: #fcd34d;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px var(--shadow-light), 0 4px 6px -4px var(--shadow-light);
+    transform: rotate(-2deg);
+    display: inline-block;
+}
+
+.header-pin {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    margin-right: -0.5rem;
+    font-size: 1.8rem;
+    transform: rotate(18deg);
+    color: #ef4444;
+    text-shadow: 0 1px 1px #000;
+}
+
+/* --- Notes Grid Styles (2-Column Laptop View) --- */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2-column layout for wider screens */
+    gap: 1.5rem; 
+    margin-top: 3rem; 
+    padding-top: 2rem;
+    border-top: 2px dashed #9ca3af; /* Separator line above notes */
+}
+
+/* Responsive adjustment for smaller screens (e.g., tablets/mobiles) */
+@media (max-width: 768px) {
+    .notes-grid {
+        grid-template-columns: 1fr; /* Single column on small devices */
+    }
+}
+
+/* --- Individual Note Card Styles (Retaining Yellow Paper Look) --- */
+.note-card {
+    background-color: var(--paper-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-top: 10px solid var(--secondary-color);
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease-out;
+    transform: rotate(calc(var(--i) * 0.5deg - 1deg)); 
+    box-shadow: 0 6px 10px var(--shadow-light);
+}
+
+.note-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(-45deg, transparent 25%, #fef9c3 25%, #fef9c3 50%, transparent 50%, transparent 75%, #fef9c3 75%, #fef9c3);
+    background-size: 15px 15px;
+    opacity: 0.5;
+}
+
+.note-card:hover {
+    transform: translateY(-8px) rotate(0deg) scale(1.03); 
+    box-shadow: 0 20px 40px -12px var(--shadow-heavy);
+    z-index: 10; 
+}
+/* ... (Note Content/Delete Button styles are in Note.css) ... */
+.no-notes-message {
+    text-align: center;
+    color: #6b7280;
+    padding: 2rem 0;
+    font-size: 1.25rem;
+    font-style: italic;
+    grid-column: 1 / -1; 
+}
+
+
+/* --- Create Note Form Styles (BROWN AND YELLOW COMBO) --- */
+.form-container {
+    max-width: 350px; /* WIDTH REMAINS SMALL */
+    margin: 0 auto;
+    background-color: var(--form-bg-color); /* Light cream/yellow BG */
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    padding: 1.25rem; /* DECREASED PADDING for container height */
+    border: 3px solid var(--form-primary-brown); 
+    position: relative;
+}
+
+/* --- The 'Paper Clip' Element (Adjusted for Brown/Yellow) --- */
+.clipboard-clip {
+    position: absolute;
+    top: -1.5rem; /* Lifted slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4rem; /* Smaller width */
+    height: 1rem;
+    background-color: #bfa886; /* Brownish-gray metal */
+    border-radius: 6px 6px 0 0; 
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    border: 1px solid #968367;
+}
+
+.form-header {
+    font-size: 1.75rem; /* Smaller header */
+    font-weight: bold;
+    color: var(--form-primary-brown); /* Brown header color */
+    margin-bottom: 1rem;
+    border-bottom: 2px dashed var(--form-border-yellow); /* Yellow dashed underline */
+    padding-bottom: 0.5rem;
+}
+
+.form-label {
+    display: block;
+    color: #1f2937;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 0.5rem; /* DECREASED PADDING for input height (title field) */
+    border: 1px solid #d1d5db;
+    border-radius: 0.3rem;
+    background-color: white; 
+    outline: none;
+    transition: all 0.2s;
+    margin-bottom: 0.75rem; 
+}
+
+.form-input:focus, .form-textarea:focus {
+    border-color: var(--form-primary-brown);
+    box-shadow: 0 0 0 3px rgba(124, 45, 18, 0.2);
+}
+
+.form-textarea {
+    min-height: 60px; /* DECREASED MINIMUM HEIGHT for content box */
+    resize: vertical;
+}
+
+/* --- Submit Button (Themed Brown) --- */
+.submit-btn {
+    width: 100%;
+    background-color: var(--form-primary-brown);
+    color: white;
+    font-size: 1rem; /* Slightly smaller button text */
+    padding: 0.5rem 1rem; /* DECREASED PADDING for button height */
+    border-radius: 0.5rem;
+    font-weight: 800;
+    box-shadow: 0 3px 5px var(--shadow-light);
+    transition: all 0.15s ease-out;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #9a3412; /* Slightly darker brown on hover */
+    transform: translateY(-1px);
+}
+
+/* --- "Press" Button Animation --- */
+.btn-press:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 3px 0 var(--shadow-light);
+}

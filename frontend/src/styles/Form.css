@@ -1,0 +1,98 @@
+/* --- CSS Variables for Form Consistency (Brown & Yellow Theme) --- */
+:root {
+    --primary-brown: #7c2d12;       /* dark orange-900 / brown */
+    --primary-dark-brown: #9a3412;  /* orange-800 / slightly darker brown for hover */
+    --accent-yellow: #fcd34d;       /* yellow-300 for highlights */
+    --paper-background: #fffbeb;    /* yellow-50, for light paper feel */
+    --border-color: #d8b4fe;        /* purple-200 for a unique border */
+    --focus-ring-color: #fce7f3;    /* pink-100 for a softer focus glow */
+    --text-color: #374151;          /* gray-700 */
+    --font-stack: "Georgia", serif; /* A more classic/journalistic font */
+}
+
+/* --- Form Container (Outer wrapper) --- */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Slightly decreased space between elements */
+    font-family: var(--font-stack);
+    width: 90%; /* Decreased width for the form's internal elements */
+    max-width: 320px; /* Max width for smaller form elements */
+    margin: 0 auto; /* Center the form if parent allows */
+}
+
+/* --- Form Header (Login/Register Title) --- */
+.form-container h1 {
+    font-size: 2rem; /* Slightly smaller for a tighter feel */
+    font-weight: 700; /* Medium bold */
+    color: var(--primary-brown); /* Themed brown color */
+    text-align: center;
+    margin-bottom: 0.75rem; /* Increased margin for better separation */
+    letter-spacing: 0.05em; /* A bit more spaced for a classic look */
+    text-transform: uppercase; /* For a stronger title */
+}
+
+/* --- Form Input Fields --- */
+.form-input {
+    width: 100%;
+    padding: 0.8rem 1rem; /* Slightly decreased padding */
+    border: 2px solid var(--border-color); /* Unique purple border */
+    border-radius: 0.5rem; /* Slightly less rounded corners */
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background-color: var(--paper-background); /* Light paper background for inputs */
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+/* Enhanced Focus State (Visual Feedback) */
+.form-input:focus {
+    border-color: var(--primary-brown);
+    box-shadow: 0 0 0 3px var(--focus-ring-color); /* Softer focus ring */
+}
+
+/* Disabled State */
+.form-input:disabled {
+    background-color: #fef2f2; /* very light red/pink */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* --- Form Button --- */
+.form-button {
+    width: 100%;
+    padding: 0.9rem 1.2rem; /* Adjusted padding */
+    background-color: var(--primary-brown);
+    color: white;
+    font-size: 1rem; /* Slightly smaller font for button */
+    font-weight: 700;
+    border: none;
+    border-radius: 0.5rem; /* Matches input border-radius */
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 0.025em; /* Subtle letter spacing */
+}
+
+/* Hover and Active State (Animation) */
+.form-button:hover:not(:disabled) {
+    background-color: var(--primary-dark-brown);
+    transform: translateY(-2px); /* Slightly more pronounced lift */
+    box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.form-button:active:not(:disabled) {
+    transform: scale(0.98); /* Slightly more noticeable press */
+    box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled Button State */
+.form-button:disabled {
+    background-color: #a8a29e; /* stone-400 for disabled brown */
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+/* --- Loading Indicator Integration --- */
+/* (Remains the same, handled by the LoadingIndicator component itself) */
