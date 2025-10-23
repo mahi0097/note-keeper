@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 web: gunicorn backend.wsgi:application
+=======
+cd backend && gunicorn backend.wsgi:application
+>>>>>>> 672ef48 (Updated deployment settings and Procfile)
