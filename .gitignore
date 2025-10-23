@@ -1,7 +1,9 @@
 # Python
 env/
-__pycache__/
 *.pyc
+__pycache__/
+staticfiles/
+
 
 # Node
 node_modules/
